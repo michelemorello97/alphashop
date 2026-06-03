@@ -1,0 +1,14 @@
+<!doctype html>
+<div>
+<label for = "userId">User ID:</label>
+<input type="text" id = "userId" placeholder="Nome Utente" [(ngModel)]="userId">
+<label for = "password">Password:</label>
+<input type="password" id = "password" placeholder="Password" [(ngModel)]="password">
+<button (click)="gestAut()">Connetti</button>
+</div>
+@if(autenticato === false){
+  <div>{{ errMsg }}</div>
+}
+@else{
+  <div>Ti diamo il benvenuto in alphashop, inserisci le tue credenziali.</div>
+}
