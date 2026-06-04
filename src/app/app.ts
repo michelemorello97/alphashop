@@ -9,7 +9,5 @@ import { Login } from "./login/login";
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('alphashop');
-  saluti: string = 'Benvenuto in alphashop Coglionazzo';
-  bollini: number = 1500;
+  
 }
