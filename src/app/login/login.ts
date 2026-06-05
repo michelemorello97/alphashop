@@ -19,7 +19,7 @@ export class Login {
   gestAut = (): void => {
     console.log(this.userId);
     if(this.userId === 'Michele' && this.password === '123_Stella') {
-      this.router.navigate(['welcome']);
+      this.router.navigate(['welcome', this.userId]);
       this.autenticato = true;
     }
     else {

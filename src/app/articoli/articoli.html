@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<h1>Articoli disponibili</h1>
+<table id="articoli" border="1">
+    <caption>Alimentari</caption>
+    <thead>
+        <tr>
+            <th>CodArt</th>
+            <th>Descrizione</th>
+            <th>UM</th>
+            <th>PzCart</th>
+            <th>Peso</th>
+            <th>Prezzo</th>
+            <th>Attivo</th>
+            <th>Data</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!--
+        <tr *ngFor="let articolo of articoli">
+            <td>{{ articolo.codart }}</td>
+            <td>{{ articolo.descrizione }}</td>
+            <td>{{ articolo.um }}</td>
+            <td>{{ articolo.pzcart }}</td>
+            <td>{{ articolo.peso }}</td>
+            <td>{{ articolo.prezzo }}</td>
+        </tr>-->
+        @for (articolo of articoli; track articolo) {
+        <tr>
+            <td>{{ articolo.codart }}</td>
+            <td>{{ articolo.descrizione }}</td>
+            <td>{{ articolo.um }}</td>
+            <td>{{ articolo.pzcart }}</td>
+            <td>{{ articolo.peso }}</td>
+            <td>{{ articolo.prezzo | currency: 'EUR' }}</td>
+            <td>{{ articolo.activate }}</td>
+            <td>{{ articolo.data | date: 'dd-mm-yyyy'}}</td>
+        </tr>
+    }
+    </tbody>
+</table>
