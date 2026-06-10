@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CoreModule } from "../core/core-module";
+import { Authapp } from '../../services/authapp';
 
 @Component({
   selector: 'app-login',
@@ -18,11 +19,11 @@ export class Login {
   titolo: string = "Accesso & Autenticazione";
   sottoTitolo: string = "Procedi ad inserire la userId e la password";
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private BasicAuth: Authapp) {}
 
   gestAut = (): void => {
     console.log(this.userId);
-    if(this.userId === 'Michele' && this.password === '123_Stella') {
+    if(this.BasicAuth.autentica(this.userId, this.password)) {
       this.router.navigate(['welcome', this.userId]);
       this.autenticato = true;
     }
