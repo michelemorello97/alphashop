@@ -39,7 +39,12 @@
                     <li><a class="dropdown-item" href="#">Registrati</a></li>
                     <li><a class="dropdown-item" href="#">Disabilita</a></li>
                     <li><hr class="dropdown-divider" href="#"></li>
-                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                    @if(BasicAuth.isLogged()){
+                        <li><a class="dropdown-item" routerLink="/logout">Logout {{ BasicAuth.loggedUser() }}</a></li>
+                    }
+                    @else{
+                        <li><a class="dropdown-item disabled" href="#">Logout</a></li>
+                    }                    
                 </ul>
             </div>
         
