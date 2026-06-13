@@ -1,9 +1,9 @@
 import { Routes, CanActivate } from '@angular/router';
-import { Login } from './login/login';
-import { Welcome } from './welcome/welcome';
-import { Error } from './error/error';
-import { Articoli } from './articoli/articoli';
-import { Logout } from './logout/logout';
+import { Login } from './pages/login/login';
+import { Welcome } from './pages/welcome/welcome';
+import { Error } from './pages/error/error';
+import { Articoli } from './pages/articoli/articoli';
+import { Logout } from './pages/logout/logout';
 import { RouteGuard } from '../services/route-guard';
 
 export const routes: Routes = [

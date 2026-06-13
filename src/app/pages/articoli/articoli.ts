@@ -1,6 +1,6 @@
 import { NgFor, DatePipe, CurrencyPipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { IArticoli } from '../models/articoli';
+import { IArticoli } from '../../models/articoli';
 
 @Component({
   selector: 'app-articoli',

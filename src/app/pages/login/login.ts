@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CoreModule } from "../core/core-module";
-import { Authapp } from '../../services/authapp';
+import { CoreModule } from "../../core/core-module";
+import { Authapp } from '../../../services/authapp';
 
 @Component({
   selector: 'app-login',

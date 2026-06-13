@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Authapp } from '../../services/authapp';
+import { Authapp } from '../../../services/authapp';
 
 @Component({
   selector: 'app-logout',

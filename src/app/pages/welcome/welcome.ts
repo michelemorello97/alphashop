@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { CoreModule } from "../core/core-module";
+import { CoreModule } from "../../core/core-module";
 
 @Component({
   selector: 'app-welcome',
