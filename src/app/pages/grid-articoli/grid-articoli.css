@@ -61,7 +61,7 @@
     padding: 1rem;
 }
 
-.card-product-grid .a.title{
+.card-product-grid a.title{
     color: #6c757d;
     display: block;
     text-decoration: none;
@@ -88,5 +88,5 @@
 }
 
 .btn-light{
-    color: #adb5bd;
+    color: #000;
 }
