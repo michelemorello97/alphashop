@@ -1,0 +1,17 @@
+<div class="col">
+    <div class="card card-product-grid">
+        <a href="#" class="img-wrap">
+            <img src="{{ articolo.imageUrl }}" class="image-rounded" width="180" height="225" alt="Product">
+        </a>
+        <div class="info-wrap">
+            <a href="#" class="title text-truncate">{{ articolo.descrizione }}</a>
+            <div class="price mb-2">{{articolo.prezzo | currency: 'EUR'}}</div>
+            <a href="#" data-bs-toggle="dropdown" class="btn btn-sm btn-light icon-set">
+                <i class="material-icons">edit</i> Modifica
+            </a>
+            <a href="#" data-bs-toggle="dropdown" class="btn btn-sm btn-outline-danger  icon-set">
+                <i class="material-icons">delete_forever</i> Elimina
+            </a>
+        </div>
+    </div>
+</div>
