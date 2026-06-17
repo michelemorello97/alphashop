@@ -38,8 +38,11 @@
     <div class="card-body">
     @if(articoli$){
         <div class="row gx-3 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-5">
-            @for (articolo of articoli$; track articolo) {
-                <app-articoli-card [articolo]="articolo"></app-articoli-card>
+            @for (articolo of articoli$; track articolo.codart) {
+                <app-articoli-card 
+                [articolo]="articolo"
+                (delete)="handleDelete($event)"
+                (edit)="handleEdit($event)"></app-articoli-card>
             }
         </div>
     }

@@ -6,12 +6,12 @@
         <div class="info-wrap">
             <a href="#" class="title text-truncate">{{ articolo.descrizione }}</a>
             <div class="price mb-2">{{articolo.prezzo | currency: 'EUR'}}</div>
-            <a href="#" data-bs-toggle="dropdown" class="btn btn-sm btn-light icon-set">
+            <button href="#" class="btn btn-sm btn-light icon-set" (click)="editArt()">
                 <i class="material-icons">edit</i> Modifica
-            </a>
-            <a href="#" data-bs-toggle="dropdown" class="btn btn-sm btn-outline-danger  icon-set">
+            </button>
+            <button href="#" class="btn btn-sm btn-outline-danger  icon-set" (click)="delArt()">
                 <i class="material-icons">delete_forever</i> Elimina
-            </a>
+            </button>
         </div>
     </div>
 </div>
