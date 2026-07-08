@@ -16,6 +16,7 @@ export class Welcome implements OnInit {
     titolo: string = "Benvenuto in AlphaShop";
     sottoTitolo: string = "Visualizza le offerte del giorno!";
     saluti: string = "";
+    errore: string = "";
 
     constructor(private router: ActivatedRoute, private salutiSrv: SalutiData){}
 
@@ -24,12 +25,19 @@ export class Welcome implements OnInit {
     }
 
     getSaluti = (): void =>{
-        this.salutiSrv.getSaluti().subscribe(
-            response => this.handleResponse(response)
-        );
+        this.salutiSrv.getSaluti(this.utente).subscribe({
+            next: this.handleResponse.bind(this),
+            error: this.handleError.bind(this)
+        });
     }
 
     handleResponse(response: Object){
         this.saluti = response.toString();
+        console.log("Saluti ricevuti: " + this.saluti);
+    }
+
+    handleError(error: Object){
+        this.errore = error.toString();
+        console.error("Errore durante il recupero dei saluti: " + this.errore);
     }
 }
