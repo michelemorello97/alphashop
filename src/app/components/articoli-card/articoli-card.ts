@@ -10,11 +10,11 @@ import { CurrencyPipe } from '@angular/common';
 })
 export class ArticoliCard {
 
-    @Input() articolo: IArticoli = {codart: '', descrizione: '', um: '', pzcart: 0, peso: 0, prezzo: 0, activate: true, data: new Date(), imageUrl: ''};
+    @Input() articolo: IArticoli = {codArt: '', descrizione: '', um: '', codStat: '', pzcart: 0, pesoNetto: 0, prezzo: 0, idStatoArt: '', dataCreazione: new Date(), imageUrl: ''};
 
     @Output() delete = new EventEmitter();
     @Output() edit = new EventEmitter();
 
-    editArt = () => this.edit.emit(this.articolo.codart);
-    delArt = () => this.delete.emit(this.articolo.codart);
+    editArt = () => this.edit.emit(this.articolo.codArt);
+    delArt = () => this.delete.emit(this.articolo.codArt);
 }

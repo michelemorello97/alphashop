@@ -1,5 +1,5 @@
-import { DatePipe, CurrencyPipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { DatePipe, CurrencyPipe} from '@angular/common';
+import { Component, OnInit, signal } from '@angular/core';
 import { IArticoli } from '../../models/articoli';
 import { ArticoliService } from '../../../services/data/articoliService';
 
@@ -12,7 +12,8 @@ import { ArticoliService } from '../../../services/data/articoliService';
 
 export class Articoli implements OnInit{
 
-    articoli$: IArticoli[] = [];
+    //articoli$: IArticoli[] = [];
+    articoli$ = signal<IArticoli[]>([]);
     errore: string = "";
 
     constructor(private artcoliSevice: ArticoliService){}
@@ -25,8 +26,10 @@ export class Articoli implements OnInit{
     }
 
     handleResponse = (articoli: IArticoli[]) => {
-        this.articoli$ = articoli;
-        console.log(this.articoli$);
+        this.articoli$.set(articoli);
+        //this.articoli$ = articoli;
+        console.log('Articoli ricevuti:', this.articoli$);
+        console.log('Numero articoli:', this.articoli$.length);
     }
     
     handleError = (error: Object) => {

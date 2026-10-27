@@ -39,7 +39,7 @@ export class GridArticoli implements OnInit{
 
     handleDelete = (codart: string) => {
         console.log("cliccato il tasto elimina del codice " + codart);
-        this.articoli$.splice(this.articoli$.findIndex(x => x.codart === codart), 1);
+        this.articoli$.splice(this.articoli$.findIndex(x => x.codArt === codart), 1);
         console.log(this.articoli$);
     }
 
