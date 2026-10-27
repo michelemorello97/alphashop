@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticoliCard } from "../../components/articoli-card/articoli-card";
 import { IArticoli } from '../../models/articoli';
-import { ArticoliService } from '../../../services/articoliService';
+import { ArticoliService } from '../../../services/data/articoliService';
 
 @Component({
   selector: 'app-grid-articoli',
@@ -12,12 +12,25 @@ import { ArticoliService } from '../../../services/articoliService';
 export class GridArticoli implements OnInit{
 
     articoli$: IArticoli[] = [];
+    errore: string = "";
 
     constructor(private articoliService: ArticoliService){}
 
     ngOnInit(): void {
-        this.articoli$ = this.articoliService.getArticoli();
+        this.articoliService.getArticoliByDesc("Barilla").subscribe({
+            next: this.handleResponse.bind(this),
+            error: this.handleError.bind(this)
+        });
+    }
+
+    handleResponse = (articoli: IArticoli[]) => {
+        this.articoli$ = articoli;
         console.log(this.articoli$);
+    }
+
+    handleError = (error: Object) => {
+        this.errore = error.toString();
+        console.log(this.errore);
     }
 
     handleEdit = (codart: string) => {

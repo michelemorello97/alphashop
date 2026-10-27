@@ -1,11 +1,18 @@
 import { Injectable } from '@angular/core';
-import { IArticoli } from '../app/models/articoli';
+import { HttpClient } from '@angular/common/http';
+import { IArticoli } from '../../app/models/articoli';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ArticoliService {
-    articoli: IArticoli[] = [
+
+    constructor(private HttpClient: HttpClient){}
+
+    getArticoliByDesc = (descrizione: string) => {
+        return this.HttpClient.get<IArticoli[]>(`http://localhost:5051/api/articoli/cerca/descrizione/${descrizione}`);
+    }
+    /*articoli: IArticoli[] = [
         {codart: '014600301', descrizione: 'Barilla farina 1 kg', um: 'PZ', pzcart: 24, peso: 1, prezzo: 1.09, activate: true, data: new Date(), imageUrl: '/images/prodotti/1.jpg'},
         {codart: '014600302', descrizione: 'Mulino Bianco Tarallucci 700 g', um: 'PZ', pzcart: 12, peso: 0.7, prezzo: 2.49, activate: true, data: new Date(), imageUrl: '/images/prodotti/2.jpg'},
         {codart: '014600303', descrizione: 'De Cecco Penne Rigate 500 g', um: 'PZ', pzcart: 24, peso: 0.5, prezzo: 1.39, activate: true, data: new Date(), imageUrl: '/images/prodotti/3.jpg'},
@@ -21,5 +28,7 @@ export class ArticoliService {
         const index = this.articoli.findIndex(articoli => articoli.codart === codart);
 
         return this.articoli[index];
-    }
+    }*/
+
+    
 }
