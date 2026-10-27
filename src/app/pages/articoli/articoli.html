@@ -68,7 +68,12 @@
                         <td class="tbl-string">{{ articolo.pzcart }}</td>
                         <td class="tbl-string">{{ articolo.pesoNetto }}</td>
                         <td class="tbl-string">{{articolo.prezzo | currency : 'EUR' }}</td>
-                        <td class="tbl-string infoBadge"><span class="badge rounded-pill alert-success">Attivo</span></td>
+                        <td class="tbl-string infoBadge">
+                            <span [class]="{
+                                'badge rounded-pill alert-success': articolo.idStatoArt === 'Attivo',
+                                'badge rounded-pill alert-danger': articolo.idStatoArt === 'Sospeso' || articolo.idStatoArt === 'Eliminato',
+                            }">{{articolo.idStatoArt}}</span>
+                        </td>
                         <td class="tbl-string">{{articolo.dataCreazione | date : 'dd-MM-yyyy'}}</td>
 
                         <td class="text-end">

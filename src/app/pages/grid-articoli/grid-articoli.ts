@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal} from '@angular/core';
 import { ArticoliCard } from "../../components/articoli-card/articoli-card";
 import { IArticoli } from '../../models/articoli';
 import { ArticoliService } from '../../../services/data/articoliService';
@@ -11,8 +11,8 @@ import { ArticoliService } from '../../../services/data/articoliService';
 })
 export class GridArticoli implements OnInit{
 
-    articoli$: IArticoli[] = [];
-    errore: string = "";
+    articoli$ = signal<IArticoli[]>([]);
+    errore = signal<string>("");
 
     constructor(private articoliService: ArticoliService){}
 
@@ -24,13 +24,13 @@ export class GridArticoli implements OnInit{
     }
 
     handleResponse = (articoli: IArticoli[]) => {
-        this.articoli$ = articoli;
-        console.log(this.articoli$);
+        this.articoli$.set(articoli);
+        console.log(this.articoli$());
     }
 
     handleError = (error: Object) => {
-        this.errore = error.toString();
-        console.log(this.errore);
+        this.errore.set(error.toString());
+        console.log(this.errore());
     }
 
     handleEdit = (codart: string) => {
@@ -39,8 +39,10 @@ export class GridArticoli implements OnInit{
 
     handleDelete = (codart: string) => {
         console.log("cliccato il tasto elimina del codice " + codart);
-        this.articoli$.splice(this.articoli$.findIndex(x => x.codArt === codart), 1);
-        console.log(this.articoli$);
+         this.articoli$.update(articoli =>
+            articoli.filter(x => x.codArt !== codart)
+        );
+        console.log(this.articoli$());
     }
 
 }

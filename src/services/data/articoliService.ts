@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IArticoli } from '../../app/models/articoli';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +11,25 @@ export class ArticoliService {
     constructor(private HttpClient: HttpClient){}
 
     getArticoliByDesc = (descrizione: string) => {
-        return this.HttpClient.get<IArticoli[]>(`http://localhost:5051/api/articoli/cerca/descrizione/${descrizione}`);
+        return this.HttpClient.get<IArticoli[]>(`http://localhost:5051/api/articoli/cerca/descrizione/${descrizione}`)
+            .pipe(
+                map(response => {
+                    response.forEach(item => item.idStatoArt = this.getDesStatoArt(item.idStatoArt))
+                    return response;
+                })
+            )
     }
+
+    getDesStatoArt = (idStato: string) => {
+        console.log('idStato: ', idStato);
+        if(idStato ==='1')
+            return 'Attivo';
+        else if(idStato ==='2')
+            return 'Sospeso';
+        else
+            return 'Eliminato';
+    }
+
     /*articoli: IArticoli[] = [
         {codart: '014600301', descrizione: 'Barilla farina 1 kg', um: 'PZ', pzcart: 24, peso: 1, prezzo: 1.09, activate: true, data: new Date(), imageUrl: '/images/prodotti/1.jpg'},
         {codart: '014600302', descrizione: 'Mulino Bianco Tarallucci 700 g', um: 'PZ', pzcart: 12, peso: 0.7, prezzo: 2.49, activate: true, data: new Date(), imageUrl: '/images/prodotti/2.jpg'},
